@@ -13,7 +13,19 @@
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
     "lint": "standard --verbose --fix *.js src cypress/integration",
-    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post"
+    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post",
+    "format": "prettier --write 'src/*.jsx' 'cypress/**/*.js' 'cypress/**/*.jsx' 'lib/*.ts'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "files": [
     "dist",
@@ -32,22 +44,40 @@
   "devDependencies": {
     "@babel/core": "7.4.5",
     "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "7.7.5",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "@cypress/webpack-preprocessor": "1.1.3",
+    "@material-ui/core": "4.8.2",
+    "@material-ui/icons": "4.5.1",
+    "@material-ui/lab": "4.0.0-alpha.39",
     "@percy/cypress": "1.0.9",
+    "@testing-library/cypress": "5.0.2",
     "@types/node": "9.6.49",
+    "@types/react": "16.9.16",
+    "@types/react-dom": "16.9.4",
     "axios": "0.18.1",
     "babel-loader": "8.0.6",
+    "babel-plugin-module-resolver": "4.0.0",
+    "common-tags": "1.8.0",
     "css-loader": "2.1.1",
     "cypress": "3.4.1",
+    "cypress-plugin-snapshots": "1.2.9",
     "github-post-release": "1.13.1",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1",
+    "pretty": "2.0.0",
+    "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-google-maps": "9.4.5",
     "semantic-action": "1.1.6",
     "standard": "12.0.1",
     "style-loader": "0.23.1",
-    "typescript": "3.5.1",
+    "styled-components": "5.0.0",
+    "svg-url-loader": "3.0.3",
+    "typescript": "3.7.3",
     "webpack": "4.33.0",
     "webpack-cli": "3.3.9"
   },
@@ -65,5 +95,8 @@
   "release": {
     "analyzeCommits": "simple-commit-message",
     "generateNotes": "github-post-release"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.22"
   }
 }

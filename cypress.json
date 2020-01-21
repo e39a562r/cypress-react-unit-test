@@ -3,11 +3,16 @@
   "viewportHeight": 100,
   "video": false,
   "projectId": "z9dxah",
-  "ignoreTestFiles": "*.css",
+  "mountMode": false,
+  "testFiles": "**/*spec.js",
   "env": {
     "cypress-react-unit-test": {
       "react": "node_modules/react/umd/react.development.js",
       "react-dom": "node_modules/react-dom/umd/react-dom.development.js"
     }
-  }
+  },
+  "ignoreTestFiles": [
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*"
+  ]
 }
